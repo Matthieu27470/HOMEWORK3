@@ -1,0 +1,153 @@
+<html>
+<head>
+<title>Calculette HTML</title>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
+   integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+   <link rel="stylesheet" type="text/css" href="calculatrice2.css"> <!--permet de lier avec le fichier CSS externe-->
+</head>
+<body>
+    <h5>Select only integers of two digits. Example: 02*10 </h5>
+
+<div id="div1">
+<form name="calculette" >
+
+    <input type="text" id="result" style="text-align:right"></br>
+    <button onclick="error()" type="button" value="Deg" >Deg </button>
+    <button onclick="error()" type="button" value="x!" >x! </button>
+    <button onclick="error()" type="button" value=")" >( </button>
+    <button onclick="error()" type="button" value="(">) </button>
+    <button onclick="pourcent(resultat)" type="button" value="%">%</button>
+    <button onclick="reset()" type="button" value="AC">AC</button></br>
+    <button OnClick="error()" type="button" value="sin" >sin   </button>
+    <button onclick="error()" type="button" value="ln" >ln </button>
+    <button onclick="set(7)" type="button">7</button>
+    <button onclick="set(8)" type="button">8</button>
+    <button onclick="set(9)" type="button">9</button>
+    <button onclick="operation('&#47')" type="button" value="/">/</button></br>
+    <button onclick="error()" type="button" value="cos" >cos </button>
+    <button onclick="error()" type="button" value="log" >log </button>
+    <button onclick="set(4)" type="button">4</button>
+    <button onclick="set(5)" type="button">5</button>
+    <button onclick="set(6)" type="button">6</button>
+    <button onclick="operation('&#42')" type="button" value="*">*</button></br>
+    <button onclick="error()" type="button" value="tan" >tan </button>
+    <button onclick="error()" type="button" value="sqr" >sqr </button>
+    <button onclick="set(1)" type="button">1</button>
+    <button onclick="set(2)" type="button">2</button>
+    <button onclick="set(3)" type="button">3</button>
+    <button onclick="operation('&#45')" type="button"value="-">-</button></br>
+    <button onclick="error()" type="button" value="exp" >exp</button>
+    <button onclick="error()" type="button" value="pwr" >pwr </button>
+    <button onclick="set(0)" type="button">0 </button>
+    <button onclick="error()" type="button" value=".">.</button>
+    <button onclick="calcul()" type="button" value="=">=</button>
+    <button onclick="operation('&#43')" type="button" value="+">+</button>
+
+</td>
+</form>
+</div>
+<script>
+    var num1=null;
+    var num2=null;
+    var int1=null;
+    var int2=null;
+    var int3=null;
+    var int4=null;
+    var result=0;
+    var resultat;
+    var oper;
+
+    function set(a){
+        dis(a);
+        if (int1==null){
+            int1=arguments[0];
+        }
+        else if(int1!=null && int2==null && int3==null && int4==null){
+            int2=arguments[0];
+        }
+        else if(int2!=null && int1!=null && int3==null && int4==null){
+            int3=arguments[0];
+        }
+        else if(int1!=null && int2!=null && int3!=null && int4==null){
+            int4=arguments[0];
+        }
+    }
+    
+    function operation(opera){
+        dis(opera);
+        oper=arguments[0];
+    }
+    function calcul(){
+        dis('=');
+        num1=int1*10+int2;
+        num2=int3*10+int4;
+        if (oper=='+')
+        {
+         result=num1+num2;
+         resultat=result;
+        }
+        if (oper=='-')
+        {
+         result=num1-num2;
+         resultat=result;
+        }
+        if (oper=="*")
+        {
+         result=num1*num2;
+         resultat=result;
+        }
+        if (oper=="/")
+        {
+         result=num1/num2;
+         resultat=result;
+        }
+        dis(result);
+        int1=null;
+        int2=null;
+        int3=null;
+        int4=null;
+        oper='';
+        result=0;
+    }
+    function pourcent(res){
+        resultat=arguments[0]*100;
+        res_pourcent=resultat;
+        document.getElementById("result").value = res_pourcent  ;
+        dis('%')
+    }
+    function reset(){
+        int1=null;
+        int2=null;
+        int3=null;
+        int4=null;
+        num1=null;
+        num2=null;
+        resultat=0;
+        result=0;
+        int1=null;
+
+    }
+    function dis(val) {
+            document.getElementById("result").value += val
+        }
+
+function error(){
+    window.alert("Sorry but this character is not assigned.")
+}
+function calculate(calc) {
+
+                calc.display.value = eval(calc.display.value);
+        }   
+    
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
